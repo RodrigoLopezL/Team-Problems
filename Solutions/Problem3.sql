@@ -1,1 +1,0 @@
-select Department.name as "Department", e.name as "Employee", e.salary as "Salary" from (select departmentId, name, salary, DENSE_RANK() OVER(PARTITION BY departmentId ORDER BY salary desc) as top from Employee) e join Department on e.departmentId = Department.id where top <= 3;
